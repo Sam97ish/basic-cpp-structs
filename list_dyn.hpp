@@ -1,6 +1,5 @@
 #include <iostream>
 #include "lists.hpp"
-#include <stdexcept>
 using namespace std;
 
 //custom structs similar to what std::vector might be
@@ -46,7 +45,7 @@ class list_dyn:public list<T> {
         T elementAtInd(int i) override{
 
             if(i >= ls.nb){
-                throw out_of_range("index is out of bounds");
+                throw OutOfBounds();
             }else{
                 return ls.tab[i];
             }
@@ -98,9 +97,3 @@ class list_dyn:public list<T> {
 
 };
 
-//error handling
-struct OutOfBounds : public exception{
-    const char* what() const throw(){
-        return "Error index out of bounds" ;
-    }
-};

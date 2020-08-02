@@ -16,5 +16,10 @@ class list{
     virtual void reverse() ; //reverses the list.
 };
 
-
+//error handling
+struct OutOfBounds : public exception{
+    const char * what () const throw (){
+        return "Error index out of bounds." ;
+    }
+};
 
