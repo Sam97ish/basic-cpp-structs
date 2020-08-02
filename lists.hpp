@@ -13,13 +13,13 @@ class list{
     virtual int elementAtInd(int i) =0; //returns the element at the index i
     virtual void deleteAtInd(int i) =0; // deletes the element at the index i
     virtual void insert(T e, int i) =0; // inserts the element e at the index i
-    virtual void reverse() ; //reverses the list.
+    virtual void reverse() =0 ; //reverses the list.
 };
 
-//error handling
-struct OutOfBounds : public exception{
+//index out of bounds handling.
+struct OutOfBoundsIndex : public exception{
     const char * what () const throw (){
-        return "Error index out of bounds." ;
+        return "\n Error index out of bounds." ;
     }
 };
 

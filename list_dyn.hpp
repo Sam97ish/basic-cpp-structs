@@ -45,7 +45,7 @@ class list_dyn:public list<T> {
         T elementAtInd(int i) override{
 
             if(i >= ls.nb){
-                throw OutOfBounds();
+                throw OutOfBoundsIndex();
             }else{
                 return ls.tab[i];
             }
@@ -93,6 +93,18 @@ class list_dyn:public list<T> {
 
         void reverse() override{
 
+            dynamic_table newls;
+            newls.tab = new T[ls.capa];
+
+            int ind = 0;
+
+            for(int i = ls.nb -1; i >= 0; i--){
+                newls.tab[ind] = ls.tab[i];
+                ind++;
+            }
+
+            delete ls.tab;
+            ls.tab = newls.tab;
         }
 
 };

@@ -12,17 +12,24 @@ int main(){
     list.insert(3,2);
     list.insert(4,3);
 
+
     try{
-    cout << " the elements are " << list.elementAtInd(0) << " "
+    cout << "the elements are " << list.elementAtInd(0) << " "
+    << list.elementAtInd(1) << " " << list.elementAtInd(2) << " "
+    << list.elementAtInd(3) << endl;
+
+    list.reverse();
+    cout << "the reversed elements are " << list.elementAtInd(0) << " "
     << list.elementAtInd(1) << " " << list.elementAtInd(2) << " "
     << list.elementAtInd(3) << endl;
     }
     catch(exception& e){
         cout << e.what() << endl;
     }
+
     cout << "the size is " << list.size() << endl;
 
-    list.deleteAtInd(1);
+    list.deleteAtInd(0);
     cout << "the size after deleting the first element is " << list.size() << endl;
 
     try{
@@ -33,4 +40,5 @@ int main(){
     catch(exception& e){
         cout << e.what() << endl;
     }
+    
 }
