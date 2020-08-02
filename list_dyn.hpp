@@ -30,16 +30,14 @@ class list_dyn:public list<T> {
          * @complexity: O(1)
          **/
         ~list_dyn() { delete[] ls.tab;} // deconstructor
-        
         /**
          * @return : the size of the list.
          * @complexity : O(1)
          **/
         int size() override{return ls.nb;}
-
         /**
-         * @return : returns the element at the given index
-         * @param : index (int)
+         * @return: returns the element at the given index
+         * @param: index (int)
          * @complexity: O(1) 
          **/
         T elementAtInd(int i) override{
@@ -51,7 +49,6 @@ class list_dyn:public list<T> {
             }
             
         }
-        
         /**
          * @role: delete the element at the index given.
          * @param: index (int)
@@ -90,7 +87,10 @@ class list_dyn:public list<T> {
             ls.nb +=1;
             
         }
-
+        /**
+         * @role: reverses the elements in the list.
+         * @complexity: O(size(list))
+         **/
         void reverse() override{
 
             dynamic_table newls;
