@@ -11,9 +11,8 @@ class list{
 
     public:
     virtual int size() =0; //returns the size of the list
-    virtual int elementAtInd(int i) =0; //returns the element at the index i
+    virtual T elementAtInd(int i) =0; //returns the element at the index i
     virtual void deleteAtInd(int i) =0; // deletes the element at the index i
-    virtual void insert(T e, int i) =0; // inserts the element e at the index i
     virtual void reverse() =0 ; //reverses the list.
 };
 

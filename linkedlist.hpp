@@ -11,6 +11,10 @@ template<class T>
 struct cell{
  cell* next;
  cell* prev;
+ void setElem(T elm){ element = elm;}
+ T getElm(){return this->element;}
+
+ private:
  T element;
 };
 
@@ -72,8 +76,8 @@ class linked_list : public list<T> {
                 for(int j =0; j < i; j++){
                     firstcell = firstcell->next;
                 }
-
-                return firstcell->element;
+                T element = firstcell->getElm();
+                return element;
         }
         /**
         * @role: delete the element at the index given.
@@ -91,11 +95,12 @@ class linked_list : public list<T> {
                     ls.firstcell = rest_of_list;
                     ls.nb--;
 
-                }else if(i = ls.nb){//case of last element.
+                }else if(i == ls.nb-1){//case of last element.
 
                     ls.lastcell = ls.lastcell->prev;
                     delete ls.lastcell->next;
                     ls.nb--;
+                    
                 }
                 else{//every other case.
 
@@ -108,6 +113,7 @@ class linked_list : public list<T> {
                     delete firstcell->next;
                     firstcell->next = rest_of_list;
                     ls.nb--;
+                    
 
                 }
         }
@@ -116,16 +122,14 @@ class linked_list : public list<T> {
         * @param: e : element of the specified type.
         * @complexity: Omega( 1 ), O( i ).
         **/
-        void insert(T e, int i) override{
-            insert_linked(e);
-        }
-        void insert_linked(T e){
-            cell<T> newcell;
-            newcell.element = e;
+        void insert(T e){
+
+            cell<T>* newcell = new cell<T>;
+            newcell->setElem(e);
 
             if(ls.firstcell == nullptr){
 
-                ls.firstcell = &newcell;
+                ls.firstcell = newcell;
                 ls.firstcell->next = nullptr;
                 ls.firstcell->prev = nullptr;
                 ls.lastcell = ls.firstcell;
@@ -133,7 +137,7 @@ class linked_list : public list<T> {
 
             }else{
                 cell<T>* tmp = ls.lastcell;
-                ls.lastcell = &newcell;
+                ls.lastcell = newcell;
                 ls.lastcell->prev = tmp;
                 tmp->next = ls.lastcell;
                 ls.lastcell->next = nullptr;
@@ -141,10 +145,27 @@ class linked_list : public list<T> {
             }
         }
         /**
-         * 
+         * @role: reverses the list.
+         * @complexity: O(size(list)).
          **/
         void reverse() override{
-            ;
+
+            cell<T>* tmp = ls.firstcell;
+            cell<T>* prevToNext;
+
+            tmp->prev = tmp->next;
+            for(int k =0; k < ls.nb-1; k++){
+                tmp = tmp->prev;
+                prevToNext = tmp->prev;
+                tmp->prev = tmp->next;
+                tmp->next = prevToNext;
+            }
+            tmp = ls.firstcell;
+            ls.firstcell = ls.lastcell;
+            ls.lastcell = tmp;
+            ls.firstcell->prev = nullptr;
+            ls.lastcell->next = nullptr;
+            
         }
 };
 

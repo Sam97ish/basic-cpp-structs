@@ -73,7 +73,7 @@ class list_dyn : public list<T> {
          * @param: e : element of the specified type, i : index (int)
          * @complexity: Omega( size(list) - i ), O( size(list) )
          **/
-        void insert(T e, int i) override{
+        void insert(T e, int i){
             
             if (ls.nb == ls.capa){
                 int *temp;
