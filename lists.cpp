@@ -1,16 +1,18 @@
 #include <iostream>
-#include "list_dyn.hpp"
+#include "dynlist.hpp"
+#include "linkedlist.hpp"
 
 using namespace std;;
 
-//code mimicing the functonality of std::lists
+//test code mimicing the functonality of std::lists
 
-int main(){
+void test_list_dyn(){
+
     list_dyn<int> list = list_dyn<int>();
-    list.insert(1,0);
-    list.insert(2,1);
-    list.insert(3,2);
-    list.insert(4,3);
+    list.insert(1, 0);
+    list.insert(2, 1);
+    list.insert(3, 2);
+    list.insert(4, 3);
 
 
     try{
@@ -40,5 +42,23 @@ int main(){
     catch(exception& e){
         cout << e.what() << endl;
     }
+}
+
+int main(){
+
+    //testing the functionality of lists made using dynamic tables.
+    //test_list_dyn();
     
+    linked_list<int> list = linked_list<int>();
+
+    list.insert(1, 0);
+    list.insert(2, 1);
+    list.insert(3, 2);
+    list.insert(4, 3);
+
+    cout << "the elements are " << list.elementAtInd(0) << " "
+    << list.elementAtInd(1) << " " << list.elementAtInd(2) << " "
+    << list.elementAtInd(3) << endl;
+
+
 }

@@ -1,6 +1,7 @@
-#include <iostream>
+#ifndef LISTS_H
+#define LISTS_H
 
-using namespace std;;
+#include <exception>
 
 //the type in which the list will accept
 //typedef int TELEM; // type of element
@@ -17,9 +18,11 @@ class list{
 };
 
 //index out of bounds handling.
-struct OutOfBoundsIndex : public exception{
+struct OutOfBoundsIndex : public std::exception{
     const char * what () const throw (){
-        return "\n Error index out of bounds." ;
+        return "\nError index out of bounds." ;
     }
 };
+
+#endif
 
