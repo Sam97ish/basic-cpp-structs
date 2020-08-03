@@ -2,7 +2,9 @@
 #define STACK_H
 
 
-
+/**
+ * abstract class for all stack implementations.
+ **/
 
 template<class T>
 class stack{

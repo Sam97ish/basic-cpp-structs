@@ -2,6 +2,10 @@
 #define DYNSTACK_H
 #include "stack.hpp"
 
+/**
+ * stack implemented using a dynamic table struct.
+ **/
+
 template<class T>
 struct dynamicStack{
     T *tab;

@@ -4,7 +4,7 @@
 
 using namespace std;;
 
-//test code mimicing the functonality of std::lists
+//main function for testing the list implementations.
 
 int main(){
 

@@ -2,6 +2,10 @@
 #define LINKEDSTACK_H
 #include "stack.hpp"
 
+/**
+ * stack implemented using linked lists.
+ **/
+
 template<class T>
 struct cell{
     cell* next;
