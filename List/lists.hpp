@@ -3,8 +3,9 @@
 
 #include <exception>
 
-//the type in which the list will accept
-//typedef int TELEM; // type of element
+/**
+ * abstract class for all lists implementations.
+ **/
 
 template <class T>
 class list{
@@ -23,5 +24,5 @@ struct OutOfBoundsIndex : public std::exception{
     }
 };
 
-#endif
+#endif //LISTS_H
 

@@ -7,6 +7,10 @@
 
 using namespace std;
 
+/**
+ * list implemented using linked lists.
+ **/
+
 template<class T>
 struct cell{
  cell* next;
@@ -169,4 +173,4 @@ class linked_list : public list<T> {
         }
 };
 
-#endif
+#endif //LINKEDLIST_H

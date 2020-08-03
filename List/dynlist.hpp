@@ -5,23 +5,26 @@
 #include <iostream>
 #include "lists.hpp"
 
-
+/**
+ * list implemented using a dynamic table struct.
+ **/
 
 using namespace std;
 
 //custom structs similar to what std::vector might be
-typedef struct{
-    int *tab; //dynamic table
+template <class T>
+struct dynamic_table{
+    T *tab; //dynamic table
     int capa; //capacity of the list
     int nb; //number of elements in the list
-}dynamic_table;
+};
 
 
 
 template <class T>
 class list_dyn : public list<T> {
     private:
-        dynamic_table ls;
+        dynamic_table<T> ls;
     public:
 
         /**
@@ -100,7 +103,7 @@ class list_dyn : public list<T> {
          **/
         void reverse() override{
 
-            dynamic_table newls;
+            dynamic_table<T> newls;
             newls.tab = new T[ls.capa];
 
             int ind = 0;
@@ -116,4 +119,4 @@ class list_dyn : public list<T> {
 
 };
 
-#endif
+#endif //DYNLIST_H
