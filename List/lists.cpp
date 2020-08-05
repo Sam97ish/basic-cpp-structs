@@ -40,7 +40,8 @@ int main(){
 
     cout << "the size is " << list.size() << endl;
 
-    list.deleteAtInd(1);
+    //list.deleteElm('a');
+    list.deleteAtInd(0);
     cout << "the size after deleting the first element is " << list.size() << endl;
 
     try{

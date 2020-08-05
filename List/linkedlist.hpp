@@ -3,9 +3,8 @@
 #define LINKEDLIST_H
 
 #include "lists.hpp"
-#include <iostream>
 
-using namespace std;
+
 
 /**
  * list implemented using linked lists.
@@ -62,6 +61,7 @@ class linked_list : public list<T> {
         }
         /**
         * @return: the size of the list in int.
+        * @complexity: O(1).
         **/
         int size(){ return ls.nb;}
         /**
@@ -124,7 +124,7 @@ class linked_list : public list<T> {
         /**
         * @role: inserts the element in the list.
         * @param: e : element of the specified type.
-        * @complexity: Omega( 1 ), O( i ).
+        * @complexity: O( 1 ).
         **/
         void insert(T e){
 
@@ -170,6 +170,48 @@ class linked_list : public list<T> {
             ls.firstcell->prev = nullptr;
             ls.lastcell->next = nullptr;
             
+        }
+        /**
+         * @role: deletes the given element from the linked list.
+         * @return: true if element is deleted, false if the element is not found.
+         * @complexity: O(size(LL)).
+         **/
+        bool deleteElm(T e){
+            cell<T>* tmp = ls.firstcell;
+            bool notfound = true;
+            while(tmp != nullptr && notfound){
+
+                if(tmp->getElm() == e){// element found
+
+                    if(tmp->prev != nullptr){// if not the first chain is to be deleted.
+
+                        cell<T>* tobedeleted = tmp;
+                        tmp = tmp->prev;
+                        tmp->next = tobedeleted->next;
+                        cell<T>* next = tobedeleted->next;
+
+                        if(next != nullptr){// if tobedeleted is not the last chain, do this.
+                            next->prev = tmp;
+                        }
+
+                        delete tobedeleted;
+                        notfound = false;
+                        ls.nb--;
+
+                    }else{// if the first chain is to be deleted.
+
+                        ls.firstcell = ls.firstcell->next;
+                        delete tmp;
+                        notfound = false;
+                        ls.nb--;
+
+                    }
+
+                }
+
+                tmp = tmp->next;
+            }
+            return !(notfound);
         }
 };
 

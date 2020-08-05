@@ -1,5 +1,6 @@
 #ifndef DYNSTACK_H
 #define DYNSTACK_H
+
 #include "stack.hpp"
 
 /**
@@ -33,7 +34,7 @@ class dynstack : public stack<T>{
      * @complexity: O(1).
      **/
     ~dynstack(){
-        delete stk.tab;
+        delete[] stk.tab;
     }
     /**
      * @role: checks if stack is empty.

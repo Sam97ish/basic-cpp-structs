@@ -2,7 +2,6 @@
 #ifndef DYNLIST_H
 #define DYNLIST_H
 
-#include <iostream>
 #include "lists.hpp"
 
 /**
@@ -79,8 +78,8 @@ class list_dyn : public list<T> {
         void insert(T e, int i){
             
             if (ls.nb == ls.capa){
-                int *temp;
-                temp = new int[ls.capa *2];
+                T *temp;
+                temp = new T[ls.capa *2];
                 for(int i = 0; i <= ls.nb -1; i++){
                     temp[i] = ls.tab[i];
                  }
@@ -113,7 +112,7 @@ class list_dyn : public list<T> {
                 ind++;
             }
 
-            delete ls.tab;
+            delete[] ls.tab;
             ls.tab = newls.tab;
         }
 

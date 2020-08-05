@@ -36,7 +36,7 @@ class dynqueue : public queue<T>{
      * @complexity: O(1).
      **/
     ~dynqueue(){
-        delete que.tab;
+        delete[] que.tab;
     }
     /**
      * @role: checks if the queue is empty.
