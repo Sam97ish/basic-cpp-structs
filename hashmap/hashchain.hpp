@@ -11,6 +11,7 @@ struct hashchain{
     linked_list< std::pair<K,V> > *tab;
     int capa;
     int nb;
+    int (*hashFunctionPtr)(K,int);
 };
 
 template<class K, class V>
@@ -22,9 +23,10 @@ class hashChain : public hashmap<K,V>{
      * @role: constructor.
      * @complexity: O(1).
      **/
-    hashChain(){
+    hashChain(int (*hashFunctionPtrr)(K, int)){
         tabch.capa = 10;
         tabch.tab = new linked_list< std::pair<K,V> >[tabch.capa];
+        tabch.hashFunctionPtr = (*hashFunctionPtrr(K, int));
     }
     /**
      * @role: deconstructor.
@@ -34,6 +36,7 @@ class hashChain : public hashmap<K,V>{
         for(int i =0; i<tabch.capa; i++){
             delete tabch.tab[i];
         }
+        delete[] tabch.tab;
     }
     /**
      * @role: brings back all the keys in the hashmap.
@@ -58,6 +61,24 @@ class hashChain : public hashmap<K,V>{
 
         }
         return vec;
+    }
+    /**
+     * @role: inserts the pair of value and key into the hashmap (K, V).
+     * @complexity: O(1).
+     **/
+    void insert(std::pair(K key, V value)) override{
+
+        int index = tabch.(*hashFunctionPtr)(key); //using the hashfunction to compute the proper index.
+
+        linked_list< std::pair<K,V> > chainedlist = tabch.tab[index];
+
+        chainedlist.insert(std::make_pair(key, value)); //inserting it inside the corresponding linked chain.
+    }
+    V searchFor(K key) override{
+        ;
+    }
+    void deleteValue(K key) override{
+        ;
     }
 };
 
