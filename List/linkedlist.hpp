@@ -60,6 +60,13 @@ class linked_list : public list<T> {
             }
         }
         /**
+         * @role: getters for the private struct
+         * @complexity: all constant O(1)
+         **/
+        cell<T>* getfirstcell() {return ls.firstcell;}
+        cell<T>* getlastcell() {return ls.lastcell;}
+        int getnb(){return ls.nb;}       
+        /**
         * @return: the size of the list in int.
         * @complexity: O(1).
         **/
