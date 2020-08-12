@@ -4,9 +4,12 @@
 #include <utility>
 #include <vector>
 #include <math.h>
-#include <iostream>
 #include "hashmap.hpp"
 #include "../List/linkedlist.hpp"
+
+/**
+ * hashmap implemented using linked list to solve collisons.
+ **/
 
 template<class K, class V>
 struct hashchain{
